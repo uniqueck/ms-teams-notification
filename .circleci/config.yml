@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  ms-teams: cloudradar-monitoring/ms-teams@0.0.1
 
 jobs:
   build:
@@ -8,6 +6,12 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - ms-teams/report:
-          only_on_fail: false
-          webhook_url: $MS_TEAMS_WEBHOOK_URL
+      - run:
+          name: "Set Permission"
+          command: chmod +x .circleci/teams_notification.sh
+          when: on_success
+      - run:
+          name: "Send Notification"
+          command: .circleci/teams_notification.sh
+          shell: /bin/bash
+          when: on_success
