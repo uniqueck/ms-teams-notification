@@ -5,30 +5,12 @@ GITHUB_RELEASE_URL="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJE
 PARSE_MODE="Markdown"
 
 send_msg () {
-  curl --location --request POST ${MS_TEAMS_WEBHOOK_URL} \
-  --header 'Content-Type: application/json' \
-  --data-raw "${1}"
-}
-
-
-send_msg "
-{
+  Strint payload = "
+  {
   \"@context\": \"https://schema.org/extensions\",
   \"@type\": \"MessageCard\",
   \"title\": \"&#x1F4E2; LFET Maven Plugin Release\",
-  \"subtitle\": \"v0.2.0-210105a-alpha\",
-  \"text\": \"# What's changed
-## &#x1F52D;  Features
-
-## &#x1F41B; Bug Fixes
-
-## &#x1F4E6; Dependencies updates
-
-* update lfet version to build 210105a
-
-## &#x1F9F9; Housekeeping
-
-## &#x1F4D2; Documentation\",
+  \"text\": \"${1}\",
   \"potentialAction\": [
     {
       \"@type\": \"OpenUri\",
@@ -39,4 +21,20 @@ send_msg "
     }
   ]
 }
-"
+  "
+
+
+  curl --location --request POST ${MS_TEAMS_WEBHOOK_URL} \
+  --header 'Content-Type: application/json' \
+  --data-raw "${1}"
+}
+
+
+sed -i -e 's/:ant:/&#x1F41B;/g' \
+-e 's/:package:/&#x1F4E6;/g' \
+-e 's/:telescope:/&#x1F52D;/g' \
+-e 's/:broom:/&#x1F9F9;/g' \
+-e 's/:memo:/&#x1F4D2;/g' \
+release-notes.md
+
+send_msg "$(cat release-notes.md)"
