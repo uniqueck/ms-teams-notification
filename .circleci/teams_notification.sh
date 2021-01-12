@@ -20,8 +20,7 @@ send_msg () {
       ]
     }
   ]
-}
-  "
+}"
 
 
   curl --location --request POST ${MS_TEAMS_WEBHOOK_URL} \
@@ -30,11 +29,11 @@ send_msg () {
 }
 
 
-sed -i -e 's/:ant:/&#x1F41B;/g' \
--e 's/:package:/&#x1F4E6;/g' \
--e 's/:telescope:/&#x1F52D;/g' \
--e 's/:broom:/&#x1F9F9;/g' \
--e 's/:memo:/&#x1F4D2;/g' \
+sed -i -e 's/:ant:/\&#x1F41B;/g' \
+-e 's/:package:/\&#x1F4E6;/g' \
+-e 's/:telescope:/\&#x1F52D;/g' \
+-e 's/:broom:/\&#x1F9F9;/g' \
+-e 's/:memo:/\&#x1F4D2;/g' \
 release-notes.md
 
 send_msg "$(cat release-notes.md)"
