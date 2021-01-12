@@ -5,7 +5,7 @@ GITHUB_RELEASE_URL="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJE
 PARSE_MODE="Markdown"
 
 send_msg () {
-  curl --location --request POST ${TEAMS_WEBHOOK_URL} \
+  curl --location --request POST ${MS_TEAMS_WEBHOOK_URL} \
   --header 'Content-Type: application/json' \
   --data-raw "${1}"
 }
