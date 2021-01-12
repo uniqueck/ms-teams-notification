@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  ms-teams: cloudradar-monitoring/ms-teams@0.0.1
+
+jobs:
+  build:
+    executor: docker
+    steps:
+      - checkout
+      - run: command/to/run/your/tests
+      - ms-teams/report:
+          only_on_fail: false
+          webhook_url: $MS_TEAMS_WEBHOOK_URL
