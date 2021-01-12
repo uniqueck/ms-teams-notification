@@ -5,7 +5,7 @@ GITHUB_RELEASE_URL="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJE
 PARSE_MODE="Markdown"
 
 send_msg () {
-  local payload = "
+  local payload="
   {
   \"@context\": \"https://schema.org/extensions\",
   \"@type\": \"MessageCard\",
