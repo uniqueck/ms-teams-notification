@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  ms-teams-orb: uniqueck/ms-teams-orb@0.0.1
 
 jobs:
   build:
@@ -6,12 +8,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run:
-          name: "Set Permission"
-          command: chmod +x .circleci/teams_notification.sh
-          when: on_success
-      - run:
-          name: "Send Notification"
-          command: .circleci/teams_notification.sh
-          shell: /bin/bash
-          when: on_success
+      - ms-teams-orb/send-message:
+          title: test
+          summary: summary
+          text: text
