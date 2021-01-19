@@ -10,5 +10,5 @@ jobs:
       - checkout
       - ms-teams-orb/send-message:
           title: test
-          summary: summary
+          summary: "long summary"
           text: text
