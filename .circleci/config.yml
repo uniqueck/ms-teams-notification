@@ -13,8 +13,12 @@ jobs:
           command: echo $MS_TEAMS_WEBHOOK_URL
       - ms-teams-orb/greet:
           to: "Hugo"
+      - run:
+          name: "test env"
+          command: |
+            declare -n VALUE_TEST=$MS_TEAMS_WEBHOOK_URL
       - ms-teams-orb/greet:
-          to: $MS_TEAMS_WEBHOOK_URL
+          to: $VALUE_TEST
       - ms-teams-orb/greet:
           to: ${MS_TEAMS_WEBHOOK_URL}
       - ms-teams-orb/send-message:
