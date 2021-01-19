@@ -12,3 +12,4 @@ jobs:
           title: test
           summary: "long summary"
           text: text
+          webhook_url: "${MS_TEAMS_WEBHOOK_URL}"
