@@ -8,6 +8,9 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
+      - run:
+          name: "echo env variable"
+          command: echo $MS_TEAMS_WEBHOOK_URL
       - ms-teams-orb/send-message:
           title: test
           summary: "long summary"
