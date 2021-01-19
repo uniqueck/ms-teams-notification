@@ -17,6 +17,7 @@ jobs:
           name: "test env"
           command: |
             declare -n VALUE_TEST=$MS_TEAMS_WEBHOOK_URL
+            export VALUE=${VALUE_TEST}
       - ms-teams-orb/greet:
           to: $VALUE_TEST
       - ms-teams-orb/greet:
