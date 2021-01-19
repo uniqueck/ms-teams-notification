@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ms-teams-orb: uniqueck/ms-teams-orb@0.0.1
+  ms-teams-orb: uniqueck/ms-teams-orb@0.0.2
 
 jobs:
   build:
