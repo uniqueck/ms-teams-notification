@@ -14,6 +14,8 @@ jobs:
       - ms-teams-orb/greet:
           to: "Hugo"
       - ms-teams-orb/greet:
+          to: $MS_TEAMS_WEBHOOK_URL
+      - ms-teams-orb/greet:
           to: ${MS_TEAMS_WEBHOOK_URL}
       - ms-teams-orb/send-message:
           title: test
