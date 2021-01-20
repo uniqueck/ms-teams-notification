@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ms-teams-orb: uniqueck/ms-teams-orb@0.0.3
+  ms-teams-orb: uniqueck/ms-teams-orb@0.0.4
 
 jobs:
   build:
@@ -8,22 +8,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run:
-          name: "echo env variable"
-          command: echo $MS_TEAMS_WEBHOOK_URL
-      - ms-teams-orb/greet:
-          to: "Hugo"
-      - run:
-          name: "test env"
-          command: |
-            declare -n VALUE_TEST=$MS_TEAMS_WEBHOOK_URL
-            export VALUE=${VALUE_TEST}
-      - ms-teams-orb/greet:
-          to: $VALUE_TEST
-      - ms-teams-orb/greet:
-          to: ${MS_TEAMS_WEBHOOK_URL}
       - ms-teams-orb/send-message:
           title: test
           summary: "long summary"
           text: text
-          webhook_url: "${MS_TEAMS_WEBHOOK_URL}"
