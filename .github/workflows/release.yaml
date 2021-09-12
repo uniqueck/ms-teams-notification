@@ -14,5 +14,5 @@ jobs:
         env:
           MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
           RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF##*/v}
-          RELEASE_TITLE: LFET Maven Plugin Release
+          RELEASE_TITLE: "&#x1F4E2; LFET Maven Plugin Release"
           RELEASE_TEXT: "Release: ${{github.event.ref }}"
