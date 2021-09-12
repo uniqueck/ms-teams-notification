@@ -13,3 +13,5 @@ jobs:
       - run: sh .github/scripts/teams_notification.sh
         env:
           MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/v0.0.2
+          RELEASE_TITLE: LFET Maven Plugin Release

@@ -1,22 +1,18 @@
 #!/bin/sh
 
-GITHUB_RELEASE_URL="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/releases/tag/${CIRCLE_TAG}"
-
-PARSE_MODE="Markdown"
-
 send_msg () {
   local payload="
   {
   \"@context\": \"https://schema.org/extensions\",
   \"@type\": \"MessageCard\",
-  \"title\": \"&#x1F4E2; LFET Maven Plugin Release\",
+  \"title\": \"&#x1F4E2; ${RELEASE_TITLE}\",
   \"text\": \"${1}\",
   \"potentialAction\": [
     {
       \"@type\": \"OpenUri\",
       \"name\": \"Download Release Artifacts here\",
       \"targets\": [
-        { \"os\": \"default\", \"uri\": \"https://github.com/uniqueck/lfet-api-maven-plugin/releases/tag/v0.2.0-210105a-alpha\" }
+        { \"os\": \"default\", \"uri\": \"${RELEASE_URL}\" }
       ]
     }
   ]
