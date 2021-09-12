@@ -15,4 +15,5 @@ jobs:
           webhook_uri: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
           title: LFET Maven Plugin Release
           summary: "Release: ${GITHUB_REF##*/v}"
-          actions: '[{ "@type": "OpenUri", "name": "lorem ipsum", "targets": [{ "os": "default", "uri": "https://github.com/${{ github.repository }}/releases/tag/v0.0.2" }] }]'
+          text: "Release: ${GITHUB_REF##*/v}"
+          actions: '[{ "@type": "OpenUri", "name": "Download Release Artifacts here", "targets": [{ "os": "default", "uri": "https://github.com/${{ github.repository }}/releases/tag/v0.0.2" }] }]'
