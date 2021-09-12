@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - ".*"
+
+jobs:
+  send-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: .github/scripts/teams_notification.sh
+        shell: sh
