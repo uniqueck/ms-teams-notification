@@ -6,7 +6,7 @@ send_msg () {
   \"@context\": \"https://schema.org/extensions\",
   \"@type\": \"MessageCard\",
   \"title\": \"&#x1F4E2; ${RELEASE_TITLE}\",
-  \"text\": \"${1}\",
+  \"text\": \"Release: ${1}\",
   \"potentialAction\": [
     {
       \"@type\": \"OpenUri\",

@@ -10,10 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: aliencube/microsoft-teams-actions@v0.8.0
-        with:
-          webhook_uri: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          title: LFET Maven Plugin Release
-          summary: "Release: ${GITHUB_REF##*/v}"
-          text: "Release: ${GITHUB_REF##*/v}"
-          actions: '[{ "@type": "OpenUri", "name": "Download Release Artifacts here", "targets": [{ "os": "default", "uri": "https://github.com/${{ github.repository }}/releases/tag/v0.0.2" }] }]'
+      - run: sh .github/scripts/teams_notification.sh
+        env:
+          MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF##*/v}
+          RELEASE_TITLE: LFET Maven Plugin Release
+          RELEASE_TEXT: "Release: ${{github.event.ref }}"
