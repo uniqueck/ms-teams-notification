@@ -6,7 +6,7 @@ curl --location --request POST "${MS_TEAMS_WEBHOOK_URL}" \
                 \"@context\": \"https://schema.org/extensions\",
                 \"@type\": \"MessageCard\",
                 \"title\": \"${RELEASE_TITLE}\",
-                \"text\": \"Release: ${RELEASE_TEXT}\",
+                \"text\": \"${RELEASE_TEXT}\",
                 \"potentialAction\": [
                   {
                     \"@type\": \"OpenUri\",
