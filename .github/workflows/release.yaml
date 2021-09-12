@@ -11,3 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sh .github/scripts/teams_notification.sh
+        env:
+          MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
