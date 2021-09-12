@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: extract version from tag
+        id: vars
+        run: echo ::set-output name=version::${GITHUB_REF##*/v}
       - run: sh .github/scripts/teams_notification.sh
         env:
           MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF##*/v}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/v${{ steps.vars.outputs.version }}
           RELEASE_TITLE: "&#x1F4E2; LFET Maven Plugin Release"
-          RELEASE_TEXT: "Release: ${{github.event.ref }}"
+          RELEASE_TEXT: "Release: ${{ steps.vars.outputs.version }}"
